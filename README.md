@@ -53,7 +53,7 @@ The label file specifications are:
 One row per object
 Each row is 
 
-    class x_center y_center width height format.
+    class x_center y_center width height
 Box coordinates must be in normalized xywh format (from 0 - 1). 
 Class numbers are zero-indexed (start from 0).
 
