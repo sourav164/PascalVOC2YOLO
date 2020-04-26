@@ -5,6 +5,11 @@ To convert the annotation file, place all the Pascal VOC annotation files in one
 
     python PascalVOC2YOLO -a path_of_the_Pascal_VOC_annotation_folder
 
+### OR
+if you want the non-normalize location, height, and width of the boundin box, run the following command
+
+    python PascalVOC2YOLO -a path_of_the_Pascal_VOC_annotation_folder -m nn
+
 The output YOLO annotation files will be saved on the path_of_the_Pascal_VOC_annotation_folder.
 
 
