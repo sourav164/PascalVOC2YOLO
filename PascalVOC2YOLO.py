@@ -1,5 +1,4 @@
 # scripts to convert pascal voc annotation format to yolo formate
-
 import glob
 import os
 import re
@@ -8,6 +7,7 @@ import argparse
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-a", "--annotation", required=True, help="Path to the annotation folder")
+ap.add_argument("-m", "--method", required=False, help="default normal, put nn for non-normalize box location")
 args = vars(ap.parse_args())
 os.chdir(args["annotation"])
 
@@ -62,10 +62,18 @@ for pascal_voc in all_pascal_voc:
         xmini = int(xmin[i])
         ymaxi = int(ymax[i])
         ymini = int(ymin[i])
-        width = (int(xmaxi) - int(xmini)) / im_width
-        height = (int(ymaxi) - int(ymini)) / im_height
-        x_center = int(xmini) / im_width + 0.5 * width
-        y_center = int(ymini) / im_height + 0.5 * height
+
+        if args["method"]=="nn":
+            width = int(xmaxi) - int(xmini)
+            height = int(ymaxi) - int(ymini)
+            x_center = int (int(xmini) + 0.5 * width)
+            y_center = int (int(ymini) + 0.5 * height)
+
+        else:
+            width = (int(xmaxi) - int(xmini)) / im_width
+            height = (int(ymaxi) - int(ymini)) / im_height
+            x_center = int(xmini) / im_width + 0.5 * width
+            y_center = int(ymini) / im_height + 0.5 * height        	
 
         width, height, x_center, y_center = round(width, 3), round(height, 3), round(x_center, 3), round(y_center, 3)
         entry = object_class + " " + str(x_center) + " " + str(y_center) + " " + str(width) + " " + str(height) + "\n"
