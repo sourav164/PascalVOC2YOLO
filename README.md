@@ -13,7 +13,8 @@ Requirements:
 - argparse
 
 To install argparse 
-<b> pip install argparse </b>
+
+- <b> pip install argparse </b>
 
 ### Pascal VOC formate
 Pascal VOC stores annotation in XML file. Below is an example of Pascal VOC annotation file for object detection.
