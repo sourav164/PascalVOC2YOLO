@@ -1,7 +1,11 @@
 # PascalVOC2YOLO
 
 ## This is the simplest method of converting Pascal VOC annotation file into Darknet YOLO annotation file
-To convert the annotation file
+To convert the annotation file, place all the Pascal VOC annotation files in one folder. In terminal/command prompt, run the following line of codes  
+
+    python PascalVOC2YOLO -a path_of_the_Pascal_VOC_annotation_folder
+
+The output YOLO annotation files will be saved on the path_of_the_Pascal_VOC_annotation_folder.
 
 
 Requirements:
@@ -9,7 +13,7 @@ Requirements:
 - argparse
 
 To install argparse 
-- pip install argparse
+<b> pip install argparse </b>
 
 ### Pascal VOC formate
 Pascal VOC stores annotation in XML file. Below is an example of Pascal VOC annotation file for object detection.
