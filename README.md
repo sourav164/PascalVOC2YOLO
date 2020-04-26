@@ -1,9 +1,19 @@
 # PascalVOC2YOLO
 
-## This is the simplest method of converting Pascal VOC annotation file into YOLO annotation file
+## This is the simplest method of converting Pascal VOC annotation file into Darknet YOLO annotation file
+To convert the annotation file
+
+
+Requirements:
+- Python 3.X
+- argparse
+
+To install argparse 
+- pip install argparse
+
 ### Pascal VOC formate
 Pascal VOC stores annotation in XML file. Below is an example of Pascal VOC annotation file for object detection.
-
+#### Pascal VOC Example
     <annotation> 
       <folder>Train</folder> 
       <filename>01.png</filename>      
@@ -33,7 +43,19 @@ Pascal VOC stores annotation in XML file. Below is an example of Pascal VOC anno
     </annotation>
     
     
-YOLO: In YOLO labeling format, a .txt file with the same name is created for each image file in the same directory. Each .txt file contains the annotations for the corresponding image file, that is object class, object center coordinates, height and width.
-<object-class> <bb center x> <bb center y> <bb width> <bb height>
-For each object, a new line is created.
-Below is an example of annotation in YOLO format where the image contains two different objects.
+### YOLO Darknet: 
+The label file specifications are:
+
+One row per object
+Each row is 
+
+    class x_center y_center width height format.
+Box coordinates must be in normalized xywh format (from 0 - 1). 
+Class numbers are zero-indexed (start from 0).
+
+#### YOLO Darknet Example
+    0 0.409 0.225 0.134 0.113
+    0 0.406 0.266 0.068 0.135
+    0 0.406 0.256 0.068 0.156
+    1 0.437 0.279 0.023 0.119
+    1 0.47 0.279 0.089 0.119
