@@ -20,7 +20,7 @@ CLASS_MAPPING = {
     "cow" : "0"
     # add your classes here -  "dog":"1"
     }
-
+regex = re.compile('[^a-zA-Z]')
 # loop through all Pascal VOC annotation file and record the location of the bounding boxes and classes
 for pascal_voc in all_pascal_voc:
     xmax = []
@@ -41,7 +41,8 @@ for pascal_voc in all_pascal_voc:
         elif "<height>" in line:
             im_height = re.findall("\d+", line)[0]
         elif "<name>" in line:
-            object_classes.append(line.replace(" ", "")[6:-8])
+            classes = regex.sub('', line).replace('name', '')
+            object_classes.append(classes)
         elif "<xmax>" in line:
             xmax.append(re.findall("\d+", line)[0])
         elif "<xmin>" in line:
